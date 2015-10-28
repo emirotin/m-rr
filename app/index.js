@@ -29,7 +29,7 @@ app.get('/status', function(req, res) {
 	res.json({ playing: playing });
 });
 
-ap.get('/', function(req, res) {
+app.get('/', function(req, res) {
 	res.render('index', { playing: playing });
 });
 
