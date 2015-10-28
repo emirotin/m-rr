@@ -24,7 +24,7 @@ app.use(express.static('public'));
 
 app.post('/play', function(req, res) {
 	play();
-	res.end();
+	res.json({ playing: playing });
 });
 
 app.get('/status', function(req, res) {

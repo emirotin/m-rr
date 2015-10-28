@@ -40,13 +40,15 @@
 				$('.push').toggleClass('hidden', window.PLAYING);
 			}
 
+			function handleUpdate(data) {
+				if (data && data.playing != null) {
+					window.PLAYING = data.playing;
+					handleVisibility();
+				}
+			}
+
 			function update() {
-				$.getJSON('/status', function (data) {
-					if (data && data.playing != null) {
-						window.PLAYING = data.playing;
-						handleVisibility();
-					}
-				});
+				$.getJSON('/status', handleUpdate);
 			}
 
 			function preload() {
@@ -59,9 +61,7 @@
 			setInterval(update, 1000);
 
 			$('.push').click(function() {
-				$.post("/play", function() {
-					update();
-				});
+				$.post("/play", handleUpdate);
 			})
 		</script>
 	</body>
