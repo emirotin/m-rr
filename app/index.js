@@ -6,7 +6,7 @@ console.log('Start playback');
 var music = new Sound('./roll.wav');
 music.play();
 
-music.on('complete' function () {
+music.on('complete', function () {
 	console.log('Done with playback!');
 	process.exit(0);
 });
