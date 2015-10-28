@@ -6,14 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Push me</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+		<style>
+			html, body, .container {
+				height: 100%;
+			}
+
+			.container {
+				padding-top: 60px;
+			}
+
+			.rick {
+				display: block;
+				width: 100%;
+				max-height: 100%;
+				margin: 0 auto;
+			}
+		</style>
 	</head>
 	<body>
+		<div class="container">
+			<img src="/rick.gif" class="rick">
+			<button type="button" class="push btn btn-primary btn-lg btn-block">Push me</button>
+		</div>
+
 		<script>
 			window.PLAYING = <%= playing %>;
 		</script>
 		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script>
-			$('body').text(window.PLAYING);
+			function handleVisibility() {
+
+			}
+
+			function update() {
+				$.getJSON('/status', function (data) {
+					window.PLAYING = data.playing;
+					handleVisibility();
+				});
+			}
+
+			function preload() {
+				var img = new Image();
+				img.src = $('.rick').attr('src');
+			}
+
+			preload();
+			handleVisibility();
+			setInterval(update, 500);
+
+			/*$('.push').click(function() {
+				$.post
+			})*/
 		</script>
 	</body>
 </html>

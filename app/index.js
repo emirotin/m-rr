@@ -20,6 +20,8 @@ function play() {
 var app = express();
 app.set('view engine', 'ejs')
 
+app.use(express.static('public'));
+
 app.post('/play', function(req, res) {
 	play();
 	res.end();
