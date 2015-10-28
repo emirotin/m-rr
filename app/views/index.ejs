@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+	<head>
+			<title>Push me</title>
+	</head>
+	<body>
+		<script>
+			window.PLAYING = <%= playing %>;
+		</script>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script>
+			$('body').text(window.PLAYING);
+		</script>
+	</body>
+</html>
