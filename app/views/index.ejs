@@ -26,8 +26,8 @@
 	</head>
 	<body>
 		<div class="container">
-			<img src="/rick.gif" class="rick">
-			<button type="button" class="push btn btn-primary btn-lg btn-block">Push me</button>
+			<img src="/rick.gif" class="hidden rick">
+			<button type="button" class="hidden push btn btn-primary btn-lg btn-block">Push me</button>
 		</div>
 
 		<script>
@@ -36,7 +36,8 @@
 		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script>
 			function handleVisibility() {
-
+				$('.rick').toggleClass('hidden', !window.PLAYING);
+				$('.push').toggleClass('hidden', window.PLAYING);
 			}
 
 			function update() {
@@ -55,9 +56,11 @@
 			handleVisibility();
 			setInterval(update, 500);
 
-			/*$('.push').click(function() {
-				$.post
-			})*/
+			$('.push').click(function() {
+				$.post("/play", function() {
+					update();
+				});
+			})
 		</script>
 	</body>
 </html>
