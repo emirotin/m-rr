@@ -3,8 +3,6 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node
 
 RUN apt-get update && apt-get install -y alsa-base alsa-utils
 
-RUN modprobe snd_bcm2835 && amixer cset numid=3 1
-
 # create src dir
 RUN mkdir -p /usr/src/app/
 
